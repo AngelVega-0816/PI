@@ -101,7 +101,6 @@ router.get('/temperament', async (req, res) => {
 // ======================================
 
 router.post('/dog', async (req, res) => {
-    if(!req.body) res.send("funciona")
     try {
         let {
             name,
@@ -139,10 +138,11 @@ router.post('/dog', async (req, res) => {
             dogCreated.addTemperament(dogTemperament);
 
             //successfull
-            res.status(200).send('Dog created successfully');
+            res.status(200).send(dogCreated.id);
         }
     } catch (err) {
         console.log(err)
+        res.send("Failed to create a new dog")
     }
 })
 
