@@ -7,7 +7,6 @@ export default function Card ({id, image, name, weightMax, weightMin, temperamen
         <div className='container-card'>
 
             <div className='card'>
-                {/*  */}
 
                 <div className='face front'>
                     <img src={image} alt={name}/>

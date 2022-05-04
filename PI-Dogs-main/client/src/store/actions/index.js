@@ -50,7 +50,7 @@ export function getDogsName (payload) {
                     type: types.getDogsName,
                     payload: res.data
                 })
-            })
+            }).catch(err => {alert("Dog not found")})
     };
 };
 

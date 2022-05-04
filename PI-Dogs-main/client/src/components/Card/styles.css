@@ -1,16 +1,14 @@
 .container-Card{
-    margin:0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    min-height: 100vh;
-    background-color: green;
+    height: 100vh;
+    width: 220px;
 }
 .card {
     position: relative;
-    width: 16vw;
+    width: 220px;
     height: 260px;
     margin: 20px;
 }
@@ -22,7 +20,7 @@
     backface-visibility: hidden;
     border-radius: 10px;
     overflow: hidden;
-    transition: .5s;
+    transition: .3s;
 }
 
 .card .front {
@@ -75,7 +73,6 @@
 
 .card .back .link {
     border-top: solid 1px #f3f3f3;
-    /* height: 50px; */
     line-height: 50px;
 }
 
