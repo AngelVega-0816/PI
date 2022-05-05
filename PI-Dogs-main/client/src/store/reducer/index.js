@@ -6,7 +6,6 @@ const initialState = {
     temperaments: [],
     dogDetails: [],
 };
-
 export default function rootReducer (state = initialState, action) {
     switch (action.type) {
 // -------------------------------------------
@@ -140,3 +139,4 @@ export default function rootReducer (state = initialState, action) {
         
     }
 }
+

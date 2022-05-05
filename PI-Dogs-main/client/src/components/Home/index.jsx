@@ -5,6 +5,7 @@ import Card from '../Card';
 import Navbar from '../Navbar';
 import Pagination from '../Pagination';
 import './styles.css';
+import Loading from '../Loading';
 
 
 
@@ -31,10 +32,12 @@ export default function Home () {
 
     return (
         <div className='Home'>
+            
             <Navbar/>
             <div className="cards">
                 {
 
+                    
                     currentDogsPage.length > 0 ?
                     currentDogsPage.map((e) => (
                         <Card 
@@ -46,18 +49,15 @@ export default function Home () {
                         weightMin={e.weightMin} 
                         temperament={e.temperament}
                         />
-                    )): aux.map(e => {
-                            if(allDogs.length > 0) return (<h2 key={e}>Loading</h2>)
-                            else  return (<h2 key={e}>Not Dogs</h2>)
-                        })
-
+                    )): <Loading/>
                 }
             </div>
-                    <Pagination 
-                        dogsPages={8}
-                        allDogs={allDogs.length}
-                        paginate={paginate}
-                    />
+            <Pagination 
+                dogsPages={8}
+                allDogs={allDogs.length}
+                paginate={paginate}
+            />
+
         </div>
         
         

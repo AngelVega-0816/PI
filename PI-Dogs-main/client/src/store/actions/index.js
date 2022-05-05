@@ -29,17 +29,18 @@ export function getTemperaments() {
 };
 
 export function getDetails (id) {
-    return async function () {
-        try {
-            let response = await axios.get(`${host}/dogs/${id}`);
-            return {
-                type: types.getDetails,
-                payload: response.data,
-            };
-        } catch {
-            return alert('Dog not found. Try again');
-        }
-    }
+    return async (dispatch) => {
+        return await axios.get(`${host}/dogs/${id}`)
+            .then(response => {
+                return dispatch({
+                    type: types.getDetails,
+                    payload: response.data,
+                });
+            })
+            .catch(err => {
+                return alert('Dog details not found');
+            });
+    };
 }
 
 export function getDogsName (payload) {

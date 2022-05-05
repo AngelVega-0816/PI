@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { getDogs, getDogsName, getTemperaments, sortName, sortWeight, sortHeight, filterDogsCreated, filterDogsTemp } from './../../store/actions';
 import { useDispatch, useSelector } from "react-redux";
-// import { createPortal } from "react-dom";
 import './styles.css'
 
 export default function Navbar () {
     //variable para ocultar o mostrar navbar
     let count = 0;
+
     let dispatch = useDispatch();
     let temperaments = useSelector((state) => state.temperaments);
 
-
+    
     useEffect(() => {
         dispatch(getDogs());
         dispatch(getTemperaments());
     }, [dispatch]);
     
+    // estado para saber cual option está seleccionada y resetear
     let [selected, setSelected] = useState('');
 
+    // estado para buscar
     let [searchDog, setSearchDog] = useState('');
 
 //---------------------------------------------
@@ -54,6 +56,10 @@ export default function Navbar () {
         dispatch(filterDogsTemp(e.target.value));
     };
 
+
+    // =======================================
+    // reset options
+
     let resetOptionsRadio = () => {
         let optionsRadio = document.getElementsByClassName("options");
 
@@ -64,14 +70,12 @@ export default function Navbar () {
 
     let resetAllOptions = () => {
         let options = document.querySelectorAll('.select-temp selected');
-
-        for (let i = 0; i < options.length; i++) {
-            options[i].selected = options[i].defaultSelected
-        }
+        options.selected = options.defaultSelected
     }
+    // =======================================
 
-
-    let ocultNav = () => {
+    // hide navbar
+    let hideNav = () => {
         if(count % 2 ===0) {
             document.getElementById("btn-show").style.left = "295px";
             document.getElementById("show").style.left = "0px";
@@ -87,14 +91,21 @@ export default function Navbar () {
 
     return (
         <nav className="navbar">
+            
+            {/* button to show or hide the menu */}
             <div id="btn-show" className="btn-mostrar">
-                <div className="icon btn btn-exception" onClick={() => ocultNav()}>
+                <div className="icon btn btn-exception" onClick={() => hideNav()}>
                 🔍
                 </div>
             </div>
 
+            {/* navbar */}
             <div id="show" className="side-bar">
+                
                 <div className="menu">
+                    
+
+                    {/* Input search */}
                     <form className="search" onSubmit={(e) => handleSubmit(e)}>
                         <input id="input-submit" type="text" autoComplete="false" placeholder="Search name" onChange={(e) => {
                             setSearchDog(e.target.value);
@@ -103,8 +114,13 @@ export default function Navbar () {
                             <button type="submit" className="btn">GO</button>
                         </div>
                     </form>
+
+
+                    {/* Options sort */}
                     <div className="sort-options">
 
+
+                        {/* Temperaments */}
                         <div className="temperaments">
                             <h3>Temperaments</h3>
                             <select value={selected} className="select-temp"  onChange={(e) => {
@@ -114,6 +130,7 @@ export default function Navbar () {
                             }}>
                                 <option default value="All">All temp</option>
                                 {
+                                    //si hay temperaments, renderiza options
                                     temperaments.length > 0
                                     ? (
                                         temperaments.map(e => (<option value={e.temperament} key={e.id}>{e.temperament}</option>))
@@ -122,6 +139,8 @@ export default function Navbar () {
                             </select>
                         </div>
 
+
+                        {/* Sort by name */}
                         <div className="option name" onChange={(e) => handleSortName(e)}>
                             <h3>Name</h3>
                             <div className="contain">
@@ -134,6 +153,8 @@ export default function Navbar () {
                             </div>
                         </div>
 
+
+                        {/* Sort by weight */}
                         <div className="option weight"onChange={(e) => handleSortWeight(e)}>
                             <h3>Weight</h3>
                             <div className="contain">
@@ -146,6 +167,8 @@ export default function Navbar () {
                             </div>
                         </div>
                         
+
+                        {/* Sort by height */}
                         <div className="option height" onChange={(e) => handleSortHeight(e)}>
                             <h3>Height</h3>
                             <div className="contain">
@@ -158,11 +181,13 @@ export default function Navbar () {
                             </div>
                         </div>
 
+
+                        {/* Sort by dogs from db or api */}
                         <div className="option dbapi" onChange={(e) => handleFilterDogsCreated(e)}>
                             <h3>Dogs in</h3>
                             <div className="contain">
                                 <label>DB
-                                    <input className="options" type="radio" name="dogs" value={"db"}/>
+                                    <input className="options" type="radio" name="dogs" value="db"/>
                                 </label>
                                 <label>
                                     <input className="options" type="radio" name="dogs" value="api"/>
@@ -170,21 +195,27 @@ export default function Navbar () {
                             </div>
                         </div>
                         
-                    <div className="btn" onClick={() => {
-                        setSelected("");
-                        resetOptionsRadio();
-                        resetAllOptions();
-                        setSearchDog("");
-                        document.getElementById("input-submit").value = "";
-                        dispatch(getDogs());
-                    }}>
-                        Reset
-                    </div>
+
+                        {/* Reset button */}
+                        <div className="btn" onClick={() => {
+                            setSelected("");
+                            resetOptionsRadio();
+                            resetAllOptions();
+                            setSearchDog("");
+                            document.getElementById("input-submit").value = "";
+                            dispatch(getDogs());
+                        }}>
+                            Reset
                         </div>
+
+
+                    </div>
+                
+                
                 </div>
 
             </div>
 
         </nav>
     )
-}
+};
