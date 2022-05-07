@@ -30,8 +30,10 @@ export function getTemperaments() {
 
 export function getDetails (id) {
     return async (dispatch) => {
+        console.log(id)
         return await axios.get(`${host}/dogs/${id}`)
             .then(response => {
+                console.log(id)
                 return dispatch({
                     type: types.getDetails,
                     payload: response.data,
@@ -91,9 +93,16 @@ export function filterDogsCreated (payload) {
 };
 
 
-export function postDog (payload) {
-    return async function () {
-        let response = axios.post(`${host}/dog`, payload);
-        return response;
-    };
-};
+// export function postDog (payload) {
+//     return async function () {
+//         let response = axios.post(`${host}/dog`, payload)
+//         console.log("action")
+//         return response;
+//     };
+// };
+export function postDog(payload){
+    return async function(){
+        var json = await axios.post('http://localhost:3001/dog', payload)
+            .then(res => json)
+    }
+}

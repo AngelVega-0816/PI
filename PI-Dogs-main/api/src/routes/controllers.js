@@ -17,6 +17,7 @@ let dogsFromDB = async () => {
             },
         });
         const lastInfoDogsDB = await dataDogsDB.map(e => {
+            // console.log(e.life)
             return {
                 id: e.id,
                 name: e.name,
@@ -24,13 +25,14 @@ let dogsFromDB = async () => {
                 heightMax: parseInt(e.heightMax),
                 weightMin: parseInt(e.weightMin),
                 weightMax: parseInt(e.weightMax),
-                lifespan: e.lifespan,
+                lifespan: e.life_span,
                 temperament: e.temperaments.map(
                     temp => temp.temperament).join(', '),
                 image: e.image,
-                createdInDb: e.createdInDb,
+                createdInDb: true,
             };
         });
+        console.log("controller", lastInfoDogsDB)
         return lastInfoDogsDB;
     } catch(err) {
         console.log(err);

@@ -3,6 +3,7 @@ import Home from './components/Home';
 import LandingPage from './components/LandingPage';
 import { Routes, Route} from 'react-router-dom';
 import Details from './components/Details';
+import CreateDog from './components/CreateDog';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path='/' element={<LandingPage/>}/>
         <Route path='/home' element={<Home/>} />
         <Route path='/dogs/:id'  element={<Details/>}/>
+        <Route path='/dog' element={<CreateDog/>}/>
 
       </Routes>
       

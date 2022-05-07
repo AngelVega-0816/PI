@@ -1,5 +1,6 @@
 .navbar {
     z-index: 1000;
+    height: 100vh;
 }
 .btn-mostrar{
     position: absolute;
@@ -13,7 +14,7 @@
 .side-bar {
     position: absolute;
     color: azure;
-    height: 100vh;
+    height: 100%;
     width: 270px;
     background-color: rgba(0, 255, 255, .25);
     backdrop-filter: blur(5px);
@@ -126,4 +127,7 @@
 .btn:hover::after {
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0;
+}
+.btn-create {
+    margin-top: 20px;
 }

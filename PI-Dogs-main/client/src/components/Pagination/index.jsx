@@ -12,7 +12,7 @@ export default function Pagination ({ allDogs, dogsPages, paginate }) {
     return (
         <div className='paginate-main'>
 
-            <div className='algo'>
+            <div className='paginate-button'>
             
                 {
                     pages.length && pages.map( e => (

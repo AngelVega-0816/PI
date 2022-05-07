@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getDogs, getDogsName, getTemperaments, sortName, sortWeight, sortHeight, filterDogsCreated, filterDogsTemp } from './../../store/actions';
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 import './styles.css'
 
 export default function Navbar () {
@@ -207,6 +208,9 @@ export default function Navbar () {
                         }}>
                             Reset
                         </div>
+
+                        <Link to="/dog" className='btn btn-create'>Create</Link>
+                        
 
 
                     </div>

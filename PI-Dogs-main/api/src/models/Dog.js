@@ -31,7 +31,8 @@ module.exports = (sequelize) => {
           msg: 'Must contain a number greater than 0',
           min: 0    // Solo permite valores positivos
         },
-        isGreater(value) {  //  Verifica que la altura mínima no sea mayor a la máxima
+        /*  Verifica que la altura mínima no sea mayor a la máxima */
+        isGreater(value) {  
           if (parseInt(value) >= parseInt(this.heightMax)) {
             throw new Error('Height Min cannot be greater than Height Max');
             }
@@ -108,10 +109,6 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     
-    createInDB: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    }
   },
   {
     timestamps: false,

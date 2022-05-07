@@ -24,7 +24,8 @@ export default function Home () {
         setCurrentPage(numPag)
     }
 
-
+    //Cambio el title
+    document.title = "Home" 
 
 
 

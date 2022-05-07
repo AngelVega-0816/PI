@@ -1,6 +1,7 @@
 .Home {
     width: 100vw;
     display: flex;
+    
 }
 .cards {
     width: 80%;
@@ -16,6 +17,3 @@
     justify-content: center;
     align-items: center;
 }
-/* .cards .loadig {
-    text-align: center;
-} */
