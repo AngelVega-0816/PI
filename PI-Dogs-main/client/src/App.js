@@ -12,9 +12,9 @@ function App() {
       <Routes>
 
         <Route exact path='/' element={<LandingPage/>}/>
-        <Route path='/home' element={<Home/>} />
-        <Route path='/dogs/:id'  element={<Details/>}/>
-        <Route path='/dog' element={<CreateDog/>}/>
+        <Route exact path='/home' element={<Home/>} />
+        <Route exact path='/dogs/:id'  element={<Details/>}/>
+        <Route exact path='/dog' element={<CreateDog/>}/>
 
       </Routes>
       

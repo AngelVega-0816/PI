@@ -14,6 +14,7 @@ export function getDogs() {
                 })
             })
     };
+    
 };
 
 export function getTemperaments() {

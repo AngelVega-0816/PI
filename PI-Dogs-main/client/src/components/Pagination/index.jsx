@@ -8,7 +8,6 @@ export default function Pagination ({ allDogs, dogsPages, paginate }) {
         pages.push(i);
     }
 
-
     return (
         <div className='paginate-main'>
 

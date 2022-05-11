@@ -2,7 +2,6 @@ const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
-  // console.log(sequelize)
   // defino el modelo
   sequelize.define('dog', {
     
@@ -95,7 +94,7 @@ module.exports = (sequelize) => {
 
     life_span: {
       type: DataTypes.STRING(20),
-      defaultValue: "???"
+      defaultValue: "no data"
     },
 
     image: {

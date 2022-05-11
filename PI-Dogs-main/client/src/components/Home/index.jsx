@@ -6,12 +6,13 @@ import Navbar from '../Navbar';
 import Pagination from '../Pagination';
 import './styles.css';
 import Loading from '../Loading';
+import { getDogs } from "../../store/actions";
 
 
 
 export default function Home () {
     let aux = [1];
-
+    let dispatch = useDispatch();
     let allDogs = useSelector(state => state.allDogs);
 
     let [currentPage, setCurrentPage] = useState(1);
@@ -27,7 +28,10 @@ export default function Home () {
     //Cambio el title
     document.title = "Home" 
 
+    useEffect(() => {
 
+        return () => dispatch(getDogs)
+    }, [])
 
 
 

@@ -32,7 +32,6 @@ let dogsFromDB = async () => {
                 createdInDb: true,
             };
         });
-        console.log("controller", lastInfoDogsDB)
         return lastInfoDogsDB;
     } catch(err) {
         console.log(err);
@@ -47,8 +46,6 @@ const dogsFromApi = async () => {
 
     const getInfoApi = await axios.get('https://api.thedogapi.com/v1/breeds')
     const lastInfoDogsApi = await getInfoApi.data.map(e => {
-        // let aux = [];
-        // if(e.height.metric.length > 4) 
         return {
             id: e.id,
             name: e.name,
